@@ -45,6 +45,7 @@ model Restaurant {
   id          String     @id @default(cuid())
   name        String
   description String
+  imageUrl    String
   country     Country
   menuItems   MenuItem[]
   createdAt   DateTime   @default(now())
@@ -56,6 +57,7 @@ model MenuItem {
   name         String
   description  String
   price        Float
+  imageUrl     String
   restaurantId String
   restaurant   Restaurant  @relation(fields: [restaurantId], references: [id])
   orderItems   OrderItem[]

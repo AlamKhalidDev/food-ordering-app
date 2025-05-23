@@ -9,25 +9,21 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import { Restaurant } from "@prisma/client";
+import { RestaurantWithMenuItems } from "@/type";
+import Image from "next/image";
 
-export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
+export function RestaurantCard({ restaurant }: { restaurant: RestaurantWithMenuItems }) {
   return (
     <Card
       key={restaurant.id}
       className="overflow-hidden border-none shadow-md food-card-hover"
     >
-      <div
-        className="restaurant-card-image"
-        style={{
-          backgroundImage: `url('/placeholder.svg?height=400&width=600')`,
-        }}
-      ></div>
-      <CardHeader className="pb-2">
+      <Image src={restaurant.imageUrl} alt={restaurant.name} width={400} height={200} className="h-[300px]" />
+      <CardHeader className="">
         <div className="flex justify-between items-start">
           <div>
             <CardTitle className="text-xl">{restaurant.name}</CardTitle>
-            <CardDescription className="flex items-center gap-1 mt-1">
+            <CardDescription className="flex items-center gap-1">
               <MapPin className="h-3 w-3" />
               <span>{restaurant.country}</span>
             </CardDescription>
@@ -37,10 +33,10 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="pb-2">
+      <CardContent className="">
         <p className="text-sm line-clamp-2">{restaurant.description}</p>
       </CardContent>
-      <CardFooter className="pt-0 pb-4">
+      <CardFooter className="p=0">
         <Link href={`/restaurants/${restaurant.id}`} className="w-full">
           <Button className="w-full">View Menu</Button>
         </Link>

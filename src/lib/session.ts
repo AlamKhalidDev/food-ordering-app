@@ -19,7 +19,7 @@ export async function getCurrentUser(): Promise<User | null> {
       },
     });
 
-    if (!session || new Date(session.expires) < new Date()) {
+    if (!session || !session.user || new Date(session.expires) < new Date()) {
       return null;
     }
 

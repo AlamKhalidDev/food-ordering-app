@@ -1,9 +1,23 @@
+import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const token = request.cookies.get("session_token")?.value;
+  let token = request.cookies.get("session_token")?.value;
+  const session = await prisma.session.findUnique({
+    where: {
+      token: token,
+    },
+    include: {
+      user: true,
+    },
+  });
+
+  if(!session || !session.user || new Date(session.expires) < new Date()) {
+    request.cookies.delete("session_token");
+    token = "";
+  }
 
   const isAuthRoute = pathname === "/login" || pathname === "/register";
 
@@ -23,7 +37,6 @@ export const config = {
     "/",
     "/login",
     "/register",
-
     "/dashboard",
     "/dashboard/:path*",
     "/orders",
@@ -31,6 +44,7 @@ export const config = {
     "/cart",
     "/restaurants",
     "/restaurants/:path*",
-    "/payment-methods"
+    "/payment-methods",
   ],
+  runtime: "nodejs",
 };

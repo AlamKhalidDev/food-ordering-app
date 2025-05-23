@@ -9,6 +9,7 @@ import { QuantityControls } from "./quantity-controls";
 import { AddToCartButton } from "./add-to-cart-button";
 import { OrderWithItems } from "@/type";
 import { MenuItem } from "@prisma/client";
+import Image from "next/image";
 
 export function MenuItemCard({
   item,
@@ -25,24 +26,19 @@ export function MenuItemCard({
 
   return (
     <Card className="overflow-hidden border-none shadow-md food-card-hover">
-      <div
-        className="menu-item-image"
-        style={{
-          backgroundImage: "url('/placeholder.svg?height=300&width=400')",
-        }}
-      />
-      <CardHeader className="pb-2">
+      <Image src={item.imageUrl} alt={item.name} width={400} height={300} className="h-[300px]" />
+      <CardHeader className="">
         <div className="flex justify-between items-start">
           <CardTitle className="text-lg">{item.name}</CardTitle>
           <p className="font-bold text-primary">${item.price.toFixed(2)}</p>
         </div>
       </CardHeader>
-      <CardContent className="pb-2">
+      <CardContent className="">
         <p className="text-sm text-muted-foreground line-clamp-2">
           {item.description}
         </p>
       </CardContent>
-      <CardFooter className="pt-0 pb-4">
+      <CardFooter className="">
         {cartItem ? (
           <QuantityControls
             item={item}
