@@ -42,30 +42,36 @@ A role-based food ordering web application where users (Admins, Managers, and Me
 ### Installation
 
 1. Install dependencies:
-   \`\`\`bash
+
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 2. Set up environment variables:
-   \`\`\`bash
+
+   ```env
    DATABASE_URL="postgresql://postgres:postgres@localhost:5432/food_ordering_app?schema=public"
-   \`\`\`
+   ```
+
    Update the `.env` file with your PostgreSQL connection string.
 
 3. Set up the database:
-   \`\`\`bash
+
+   ```bash
    npx prisma migrate dev --name init
-   \`\`\`
+   ```
 
 4. Seed the database:
-   \`\`\`bash
+
+   ```bash
    npm run seed
-   \`\`\`
+   ```
 
 5. Run the development server:
-   \`\`\`bash
+
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 
 6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
