@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Food Ordering Application
+
+A role-based food ordering web application where users (Admins, Managers, and Members) can perform specific functions based on their role, with country-based access restrictions.
+
+## Features
+
+- **Role-Based Access Control (RBAC)**:
+
+  - Admins: Full access to all features
+  - Managers: Can view, create, place, and cancel orders
+  - Members: Can only view restaurants and create orders
+
+- **Country-Based Access Restrictions**:
+
+  - Non-admin users can only access data from their assigned country
+  - Managers and members from India cannot see or interact with data from America and vice versa
+  - Admins have global access across countries
+
+- **Key Functionality**:
+  - View restaurants and menu items
+  - Create an order and add food items
+  - Checkout cart and pay using existing payment method
+  - Cancel order
+  - Modify payment method
+
+## Tech Stack
+
+- Next.js 14 with App Router
+- TypeScript
+- Prisma ORM
+- PostgreSQL
+- Tailwind CSS
+- shadcn/ui components
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18+
+- PostgreSQL
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Install dependencies:
+   \`\`\`bash
+   npm install
+   \`\`\`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Set up environment variables:
+   \`\`\`bash
+   DATABASE_URL="postgresql://postgres:postgres@localhost:5432/food_ordering_app?schema=public"
+   \`\`\`
+   Update the `.env` file with your PostgreSQL connection string.
 
-## Learn More
+3. Set up the database:
+   \`\`\`bash
+   npx prisma migrate dev --name init
+   \`\`\`
 
-To learn more about Next.js, take a look at the following resources:
+4. Seed the database:
+   \`\`\`bash
+   npm run seed
+   \`\`\`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Run the development server:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Deploy on Vercel
+## Default Users
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+After seeding the database, you can log in with the following credentials:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Admin**:
+
+  - Email: nick.fury@shield.com
+  - Password: admin123
+  - Role: ADMIN
+  - Country: AMERICA
+
+- **Manager (India)**:
+
+  - Email: captain.marvel@shield.com
+  - Password: password123
+  - Role: MANAGER
+  - Country: INDIA
+
+- **Manager (America)**:
+
+  - Email: captain.america@shield.com
+  - Password: password123
+  - Role: MANAGER
+  - Country: AMERICA
+
+- **Member (India)**:
+
+  - Email: thanos@shield.com or thor@shield.com
+  - Password: password123
+  - Role: MEMBER
+  - Country: INDIA
+
+- **Member (America)**:
+  - Email: travis@shield.com
+  - Password: password123
+  - Role: MEMBER
+  - Country: AMERICA
