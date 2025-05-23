@@ -4,7 +4,7 @@ import { AlertTriangle } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-center px-4">
+    <div className="flex flex-col items-center justify-center h-[calc(100vh-100px)] text-center px-4">
       <AlertTriangle className="w-16 h-16 text-destructive mb-4" />
       <h1 className="text-4xl font-bold mb-2">Page Not Found</h1>
       <p className="text-muted-foreground mb-6">

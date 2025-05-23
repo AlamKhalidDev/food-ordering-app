@@ -72,6 +72,9 @@ export async function getUserCart() {
     },
     include: {
       orderItems: {
+        orderBy: {
+          createdAt: "asc",
+        },
         include: {
           menuItem: {
             include: {

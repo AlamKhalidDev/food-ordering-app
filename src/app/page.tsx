@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, UtensilsCrossed, ShieldCheck, Truck } from "lucide-react";
+import Image from "next/image";
 
 export default async function Home() {
   return (
@@ -58,7 +59,7 @@ export default async function Home() {
               <div className="relative lg:block hidden">
                 <div className="absolute -top-8 -right-8 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
                 <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <div className="aspect-[4/3] bg-[url('/placeholder.svg?height=600&width=800')] bg-cover bg-center"></div>
+                  <Image src={"https://img.freepik.com/free-photo/people-taking-photos-food_23-2149303524.jpg?semt=ais_hybrid&w=800"} height={600} width={800} alt="Food" className="object-cover w-full h-full aspect-[4/3]" />
                 </div>
               </div>
             </div>

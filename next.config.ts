@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
       "www.unileverfoodsolutions.com.sg",
       "www.allrecipes.com",
       "www.simplyrecipes.com",
+      "img.freepik.com",
     ],
   },
 };
