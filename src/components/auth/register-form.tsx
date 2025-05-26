@@ -16,7 +16,6 @@ import { register } from "@/lib/actions";
 import { Country } from "@prisma/client";
 import { Loader2, User, Mail, Lock, MapPin } from "lucide-react";
 import { toast } from "sonner";
-import { OAuthForm } from "./oauth-form";
 
 export function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -134,7 +133,6 @@ export function RegisterForm() {
           </Button>
         </div>
       </form>
-      <OAuthForm isLoading={isLoading} />
     </div>
   );
 }

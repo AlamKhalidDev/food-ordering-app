@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { login } from "@/lib/actions";
 import { Loader2, Mail, Lock } from "lucide-react";
 import { toast } from "sonner";
-import { OAuthForm } from "./oauth-form";
 
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -96,7 +95,6 @@ export function LoginForm() {
           </Button>
         </div>
       </form>
-      <OAuthForm isLoading={isLoading} />
     </div>
   );
 }

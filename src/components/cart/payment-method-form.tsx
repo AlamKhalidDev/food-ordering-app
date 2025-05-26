@@ -12,7 +12,7 @@ import { PaymentMethod, Role } from "@prisma/client";
 import { AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface PaymentMethodFormProps {
   paymentMethods: PaymentMethod[];
